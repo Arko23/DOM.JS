@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <div class="container">
+      <form action="post" class="frm">
+        
+        <label for="n1">Height(cm) : </label> <input type="number" id="n1" placeholder="Enter first Number">
+     
+        <label for="n2">Wright(lb) : </label> <input type="number" id="n2" placeholder="Enter first Number">
+      </form>
+      <div class="c2">
+        <button onclick="cal()" >Calculate</button>
+        <div class="result" id="result"></div>
+        <div class="status" id="status1"></div>
+      </div>
+  
+    </div>
+    
+    <script>
+        function cal(){
+            const num1 =document.getElementById('n1').value;
+            const num2=document.getElementById('n2').value;
+            if(isNaN(num1) || isNaN(num2) || num1<=0 || num2<=0){
+                document.getElementById('result').textContent ="please give a valid number";
+                document.getElementById('status1').textContent ="";
+
+            }
+            else
+            {
+                let temp1 = num1/100;
+                let temp2= num2/2.20462;
+                let result=temp2/(temp1*temp1);
+                document.getElementById('result').textContent= `Calculation result is : ${result.toFixed(2)}`;
+            if(result>30){
+                document.getElementById('status1').textContent=" Good ";
+            }
+            else if(result<=30 && result>=20){
+                document.getElementById('status1').textContent=" Not Bad ";
+            }
+            else if(result<20){
+                document.getElementById('status1').textContent=" Bad ";
+            }
+               
+            }
+        
+        }
+    </script>
+</body>
+</html>
